@@ -22,6 +22,8 @@ app.use(express.json());
 
 // Import and use profile routes
 const profileRoutes = require('./routes/profiles');
+const userInterestsRoutes = require('./routes/userInterests');
+app.use('/userInterests', userInterestsRoutes);
 app.use('/profiles', profileRoutes);
 
 app.get('/', (req, res) => {

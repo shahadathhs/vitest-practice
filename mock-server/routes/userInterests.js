@@ -1,12 +1,12 @@
 const express = require('express');
-const Profile = require('../models/profiles');
+const UserInterests = require('../models/userInterests');
 const router = express.Router();
 
 // Route to get all documents
 router.get('/', async (req, res) => {
   try {
-    const profiles = await Profile.find();
-    res.json(profiles);
+    const userInterests = await UserInterests.find();
+    res.json(userInterests);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
 // Route to create a new document
 router.post('/', async (req, res) => {
   try {
-    const profile = new Profile(req.body);
-    await profile.save();
-    res.json(profile);
+    const userInterest = new UserInterests(req.body);
+    await userInterest.save();
+    res.json(userInterest);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -28,8 +28,8 @@ router.post('/', async (req, res) => {
 // Route to update a document
 router.put('/:id', async (req, res) => {
   try {
-    const profile = await Profile.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(profile);
+    const userInterest = await UserInterests.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(userInterest);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -39,8 +39,8 @@ router.put('/:id', async (req, res) => {
 // Route to delete a document
 router.delete('/:id', async (req, res) => {
   try {
-    const profile = await Profile.findByIdAndDelete(req.params.id);
-    res.json(profile);
+    const userInterest = await UserInterests.findByIdAndDelete(req.params.id);
+    res.json(userInterest);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
