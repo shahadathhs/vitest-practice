@@ -41,6 +41,7 @@ export default function Profiles() {
         ) : (
           <p>Loading...</p>
         )}
+        {profiles.length === 0 && <p>No interests available.</p>}
       </section>
     </div>
   );

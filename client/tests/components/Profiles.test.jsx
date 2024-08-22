@@ -30,7 +30,9 @@ describe("Profiles component", () => {
 
     render(<Profiles />);
     
-    // Check if the message is displayed
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    // Wait for the interests to be loaded and rendered
+    await waitFor(() => {
+      expect(screen.getByText(/no interests available/i)).toBeInTheDocument();
+    });
   });
 });
